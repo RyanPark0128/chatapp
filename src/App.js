@@ -11,7 +11,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 firebase.initializeApp({
   // config
   apiKey: "AIzaSyDMt1FTJpotoKCZmeZEvKIz1FRUfMDfR4Q",
-  authDomain: "chatapp-8588d.firebaseapp.com",
+  authDomain: "https://ryanpark0128.github.io/chatapp/",
   databaseURL: "https://chatapp-8588d.firebaseio.com",
   projectId: "chatapp-8588d",
   storageBucket: "chatapp-8588d.appspot.com",
