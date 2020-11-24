@@ -29,16 +29,10 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
-      <header>
-        <h1>ChatApp</h1>
-        <SignOut />
-      </header>
-
-      <section>
+    <div className="backgroundColor">
+      <div>
         {user ? <ChatRoom /> : <SignIn />}
-      </section>
-
+      </div>
     </div>
   );
 }
@@ -51,23 +45,30 @@ function SignIn() {
   }
 
   return (
-    <div class="ui animated button" onClick={signInWithGoogle}>
-      <div class="visible content">Sign In</div>
-      <div class="hidden content">
-        <i class="right arrow icon"></i>
+    <div className="background">
+      <img src="https://cdn.iconscout.com/icon/free/png-512/chatbox-457904.png" alt="chat" />
+      <h1> Simple Chat App</h1>
+      <div>
+        <a class="btn btn-outline-dark" onClick={signInWithGoogle} role="button" style={{ textTransform: 'none' }}>
+          <img width="20px" style={{ marginBottom: '3px', marginRight: '5px' }} alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+          Login with Google
+          </a>
       </div>
     </div>
+    // <div class="ui animated button" style={{float:'right'}} onClick={signInWithGoogle}>
+    //   <div class="visible content">Sign In</div>
+    //   <div class="hidden content">
+    //     <i class="right arrow icon"></i>
+    //   </div>
+    // </div>
   )
 
 }
 
 function SignOut() {
   return auth.currentUser && (
-    <div class="ui animated button" onClick={() => auth.signOut()} tabindex="0">
-      <div class="visible content">Sign Out</div>
-      <div class="hidden content">
-        <i class="right arrow icon"></i>
-      </div>
+    <div className="signout">
+      <button onClick={() => auth.signOut()} tabindex="0" className="ui inverted basic button">Sign Out</button>
     </div>
   )
 }
@@ -76,12 +77,9 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
-
+  const query = messagesRef.orderBy('createdAt')
   const [messages] = useCollectionData(query, { idField: 'id' });
-
   const [formValue, setFormValue] = useState('');
-
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -99,23 +97,36 @@ function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   }
 
-  return (<div>
-    <main>
+  return (
+      <div className="chatroom">
+        <header className="header">
+          <div className="header-container">
+            <p className="title">SimpleChatApp</p>
+            <SignOut />
+          </div>
+        </header>
+        <div className="fill">
 
-      {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+        </div>
+        <main className="content">
 
-      <span ref={dummy}></span>
+          {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
-    </main>
+          <span ref={dummy}></span>
 
-    <form onSubmit={sendMessage}>
+        </main>
 
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+        <form onSubmit={sendMessage}>
 
-      <button type="submit" disabled={!formValue}>🕊️</button>
+          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
+          <button style={{ width: "5%", borderRadius: "0px" }} className="ui yellow button" type="submit" >Send</button>
 
-    </form>
-  </div>)
+        </form>
+        <div className="bottomFill">
+
+        </div>
+      </div>
+  )
 }
 
 
@@ -124,12 +135,12 @@ function ChatMessage(props) {
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
-  return (<>
+  return (<div className="message-container">
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+      <img className="messagebox" src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
       <p>{text}</p>
     </div>
-  </>)
+  </div>)
 }
 
 

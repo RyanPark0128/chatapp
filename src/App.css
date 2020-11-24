@@ -1,54 +1,84 @@
-main {
-    padding: 10px;
-    height: 100%;
-    margin: 10vh 0;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-  }
+.background {
+    text-align: center;
+    padding-top: 5%;
+}
 
 body {
-    background-color: #11ACF0;
+    background-color: #ffffe6;
 }
-  
-h1 {
-    color: white;
-    margin-top: 30px;
-}
-  .App header {
-    background-color: #181717;
-    height: 10vh;
-    min-height: 50px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 99;
-    padding: 10px;
-    box-sizing: border-box;
-  }
 
+
+.chatroom {
+    margin-left: 25%;
+    width: 50%;
+}
+
+.header {
+    background-color: #363535;
+    position:fixed;
+    width: 50%;
+    opacity: 0.95;
+    z-index:99
+}
+
+.header-container {
+    Display: block;
+    height: 20px;
+}
+
+
+.title {
+    Float: left;
+    Display: block;
+    color:white;
+    padding-left: 3%;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+}
+
+.signout {
+    float:right;
+    Display: block;
+    color:white;
+    padding-right: 3%;
+    padding-top: 12px;
+}
+
+.fill {
+    height: 75px;
+    background-color: #363535;
+}
+
+.content {
+    background-color: #363535;
+    padding-bottom: 75px;
+}
   form {
     height: 10vh;
     position: fixed;
     bottom: 0;
-    background-color: rgb(24, 23, 23);
     width: 100%;
     display: flex;
     font-size: 1.5rem;
   }
+
+  .submit-button {
+      width:5%;
+      background: white
+  }
   
   input {
     line-height: 1.5;
-    width: 100%;
+    width: 45%;
     font-size: 1.5rem;
     background: white;
     color: black;
     outline: none;
-    border: none;
+    border:none;
     padding: 0 10px;
+
   }
 
   ul, li {
@@ -87,9 +117,17 @@ h1 {
     color: black;
   }
   
-  img {
+  .messagebox {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin: 0px 10px 0px 10px;
+  }
+
+  .message-container {
+      margin-bottom: 15px;
+  }
+
+  .bottomFill {
+      height: 8vh;
   }
