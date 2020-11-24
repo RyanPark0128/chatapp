@@ -11,7 +11,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 firebase.initializeApp({
   // config
   apiKey: "AIzaSyDMt1FTJpotoKCZmeZEvKIz1FRUfMDfR4Q",
-  authDomain: "https://ryanpark0128.github.io/chatapp/",
+  authDomain: "chatapp-8588d.firebaseapp.com",
   databaseURL: "https://chatapp-8588d.firebaseio.com",
   projectId: "chatapp-8588d",
   storageBucket: "chatapp-8588d.appspot.com",
@@ -46,7 +46,7 @@ function SignIn() {
 
   return (
     <div className="background">
-      <img src="https://cdn.iconscout.com/icon/free/png-512/chatbox-457904.png" alt="chat" />
+      <img className="main-image"src="https://cdn.iconscout.com/icon/free/png-512/chatbox-457904.png" alt="chat" />
       <h1> Simple Chat App</h1>
       <div>
         <a class="btn btn-outline-dark" onClick={signInWithGoogle} role="button" style={{ textTransform: 'none' }}>
@@ -83,18 +83,23 @@ function ChatRoom() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    if (formValue.length < 1) {
+      return
+    } else {
 
-    const { uid, photoURL } = auth.currentUser;
+      const { uid, photoURL } = auth.currentUser;
+  
+      await messagesRef.add({
+        text: formValue,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid,
+        photoURL
+      })
+  
+      setFormValue('');
+      dummy.current.scrollIntoView({ behavior: 'smooth' });
+    }
 
-    await messagesRef.add({
-      text: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid,
-      photoURL
-    })
-
-    setFormValue('');
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   return (
@@ -119,7 +124,7 @@ function ChatRoom() {
         <form onSubmit={sendMessage}>
 
           <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-          <button style={{ width: "5%", borderRadius: "0px" }} className="ui yellow button" type="submit" >Send</button>
+          <button id="sub-button" className="ui yellow button" type="submit" >Send</button>
 
         </form>
         <div className="bottomFill">
