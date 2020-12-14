@@ -29,10 +29,9 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="backgroundColor">
-      <div>
-        {user ? <ChatRoom /> : <SignIn />}
-      </div>
+    <div>
+      <div id="bg" alt="chat" />
+      {user ? <ChatRoom /> : <SignIn />}
     </div>
   );
 }
@@ -45,22 +44,29 @@ function SignIn() {
   }
 
   return (
-    <div className="background">
-      <img className="main-image"src="https://cdn.iconscout.com/icon/free/png-512/chatbox-457904.png" alt="chat" />
-      <h1> Simple Chat App</h1>
-      <div>
-        <a class="btn btn-outline-dark" onClick={signInWithGoogle} role="button" style={{ textTransform: 'none' }}>
-          <img width="20px" style={{ marginBottom: '3px', marginRight: '5px' }} alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-          Login with Google
-          </a>
+    <div>
+      <div className="header">
+        <div className="logo">SimplyChat</div>
+        <button className="signin">Sign In</button>
+      </div>
+
+      <div className="contents">
+        <div className="title">
+          SimplyChat
+        </div>
+        <div className="subtitle">
+          Simply sign in and start chatting
+        </div>
+        <div className="google">
+          <div>
+            <a class="btn btn-outline-dark" onClick={signInWithGoogle} role="button" style={{ textTransform: 'none' }}>
+              <img width="20px" style={{ marginBottom: '3px', marginRight: '5px' }} alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+              Login with Google
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    // <div class="ui animated button" style={{float:'right'}} onClick={signInWithGoogle}>
-    //   <div class="visible content">Sign In</div>
-    //   <div class="hidden content">
-    //     <i class="right arrow icon"></i>
-    //   </div>
-    // </div>
   )
 
 }
@@ -88,14 +94,14 @@ function ChatRoom() {
     } else {
 
       const { uid, photoURL } = auth.currentUser;
-  
+
       await messagesRef.add({
         text: formValue,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid,
         photoURL
       })
-  
+
       setFormValue('');
       dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -103,34 +109,34 @@ function ChatRoom() {
   }
 
   return (
-      <div className="chatroom">
-        <header className="header">
-          <div className="header-container">
-            <p className="title">SimpleChatApp</p>
-            <SignOut />
-          </div>
-        </header>
-        <div className="fill">
-
+    <div className="chatroom">
+      <header className="header">
+        <div className="header-container">
+          <p className="title">SimpleChatApp</p>
+          <SignOut />
         </div>
-        <main className="content">
+      </header>
+      <div className="fill">
 
-          {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-
-          <span ref={dummy}></span>
-
-        </main>
-
-        <form onSubmit={sendMessage}>
-
-          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-          <button id="sub-button" className="ui yellow button" type="submit" >Send</button>
-
-        </form>
-        <div className="bottomFill">
-
-        </div>
       </div>
+      <main className="content">
+
+        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+
+        <span ref={dummy}></span>
+
+      </main>
+
+      <form onSubmit={sendMessage}>
+
+        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
+        <button id="sub-button" className="ui yellow button" type="submit" >Send</button>
+
+      </form>
+      <div className="bottomFill">
+
+      </div>
+    </div>
   )
 }
 

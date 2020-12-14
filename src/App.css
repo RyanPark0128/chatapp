@@ -1,166 +1,68 @@
-.background {
-    text-align: center;
-    padding-top: 5%;
+#bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -1;
+	background-size: cover;
+	background-image: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0.47),
+			rgba(0, 0, 0, 0.47)
+		),
+		url("https://images.unsplash.com/photo-1523474438810-b04a2480633c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80");
 }
 
 body {
-    background-color: #ffffe6;
+	padding-left: 140px;
+	padding-right: 140px;
 }
 
-
-.chatroom {
-    margin-left: 25%;
-    width: 50%;
+.logo {
+	float: left;
+	font-size: 25px;
+	color: white;
+	font-family: Comfortaa;
 }
 
-.header {
-    background-color: #363535;
-    position:fixed;
-    width: 50%;
-    opacity: 0.95;
-    z-index:99
+.signin {
+	float: right;
+	font-size: 13px;
+	height: 39px;
+	border-radius: 30px;
+	outline: none;
+	width: 100px;
+	border: none;
+	background: rgba(0, 0, 0, 0.16);
+	color: white;
+	font-family: Lato;
 }
 
-.header-container {
-    Display: block;
-    height: 20px;
+.contents {
+	position: absolute;
+	width: 410px;
+	height: 67px;
+	left: 120px;
+	top: 328px;
 }
-
 
 .title {
-    Float: left;
-    Display: block;
-    color:white;
-    padding-left: 3%;
-    padding-top: 15px;
-    margin-bottom: 15px;
-    font-size: 25px;
-    font-family: 'Lato', sans-serif;
+  font-family: Comfortaa;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 71px;
+
+  color: #FFFFFF;
 }
 
-.signout {
-    float:right;
-    Display: block;
-    color:white;
-    padding-right: 3%;
-    padding-top: 12px;
+.subtitle {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  width: 512px;
+  color: #FFFFFF;
 }
-
-.fill {
-    height: 75px;
-    background-color: #363535;
-}
-
-.content {
-    background-color: #363535;
-    padding-bottom: 75px;
-}
-  form {
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    font-size: 1.5rem;
-  }
-
-  .submit-button {
-      width:5%;
-      background: white
-  }
-  
-  input {
-    line-height: 1.5;
-    width: 45%;
-    font-size: 1.5rem;
-    background: white;
-    color: black;
-    outline: none;
-    border:none;
-    padding: 0 10px;
-
-  }
-
-  ul, li {
-    text-align: left;
-    list-style: none;
-  }
-  
-  p {
-    max-width: 500px;
-    margin-bottom: 30px;
-    line-height: 24px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    position: relative;
-    color: white;
-    text-align: center;
-    overflow: hidden;
-  }
-  
-  .message {
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .sent {
-    flex-direction: row-reverse;
-  }
-  
-  .sent p {
-    color: black;
-    background: #F4FC07;
-    align-self: flex-end;
-  }
-  .received p {
-    background: #e5e5ea;
-    color: black;
-  }
-  
-  .messagebox {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 0px 10px 0px 10px;
-  }
-
-  .message-container {
-      margin-bottom: 15px;
-  }
-
-  .bottomFill {
-      height: 8vh;
-  }
-
-  #sub-button {
-      widows: 10%;
-      border-radius: 0px;
-  }
-
-  @media only screen and (max-width: 1000px) {
-    .chatroom {
-        width:100%;
-        margin-left:0%;
-    }
-
-    .header {
-        width: 100%;
-    }
-
-    input {
-       width: 80%;
-    }
-
-    #sub-button {
-        width:20%;
-        margin-right: 0;
-        font-size: 10px;
-        padding: 0px;
-    }
-
-    .main-image {
-        margin-top: 35%;
-        height:200px;
-    }
-  }
