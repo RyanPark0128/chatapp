@@ -15,8 +15,8 @@
 }
 
 body {
-	padding-left: 140px;
-	padding-right: 140px;
+	padding-left: 8.3%;
+	padding-right: 8.3%;
 }
 
 .logo {
@@ -39,30 +39,34 @@ body {
 	font-family: Lato;
 }
 
+.header {
+  padding-top: 4.5vh;
+}
+
 .contents {
-	position: absolute;
-	width: 410px;
-	height: 67px;
-	left: 120px;
-	top: 328px;
+  padding-top : 27.8vh;
 }
 
 .title {
+
   font-family: Comfortaa;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 300;
   font-size: 64px;
   line-height: 71px;
-
   color: #FFFFFF;
 }
 
 .subtitle {
-  font-family: Lato;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 43px;
-  width: 512px;
-  color: #FFFFFF;
+  padding-top: 3vh;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 34px;
+	line-height: 43px;
+	color: #ffffff;
+}
+
+.google {
+  padding-top: 4vh;
 }
