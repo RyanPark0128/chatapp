@@ -14,6 +14,8 @@
 		url("https://images.unsplash.com/photo-1523474438810-b04a2480633c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80");
 }
 
+button:focus {outline:0;}
+
 body {
 	padding-left: 8.3%;
 	padding-right: 8.3%;
@@ -39,34 +41,212 @@ body {
 	font-family: Lato;
 }
 
+.signin:hover {
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
 .header {
-  padding-top: 4.5vh;
+	padding-top: 4.5vh;
 }
 
 .contents {
-  padding-top : 27.8vh;
+	padding-top: 27.8vh;
 }
 
 .title {
-
-  font-family: Comfortaa;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 64px;
-  line-height: 71px;
-  color: #FFFFFF;
+	font-family: Comfortaa;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 64px;
+	line-height: 71px;
+	color: #ffffff;
 }
 
 .subtitle {
-  padding-top: 3vh;
+	padding-top: 3vh;
 	font-family: Lato;
 	font-style: normal;
 	font-weight: 300;
 	font-size: 34px;
 	line-height: 43px;
-	color: #ffffff;
+  color: #ffffff;
+  text-transform: none;
 }
 
 .google {
   padding-top: 4vh;
+  min-width: 200px;
+
+}
+
+#google-button {
+  text-transform: none; 
+  background-color: white;
+  width: 25%;
+}
+
+.chat-container {
+  margin: auto;
+	width: 59vw;
+  height: 80.3vh;
+  margin-top:6.5vh;
+  background: rgba(1, 1, 1, 0.58);
+  overflow-y: scroll;
+}
+
+.chat-room {
+  padding-top:2vh;
+  margin-left: 2.1%;
+  margin-right: 2.1%;
+  height: 100%;
+}
+
+
+.messagebox {
+  width : 50px;
+  height : 50px;
+  border-radius: 50px;
+}
+
+.message-text {
+  background-color: white;
+  width: max-content;
+}
+
+p {
+  max-width: 49vw;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 13px 20px;
+  border-radius: 5px;
+  position: relative;
+  color: black;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  padding-bottom: 3.5vh;
+}
+
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  color: black;
+  background: yellow;
+  align-self: flex-end;
+  margin-right: 1vw;
+  font-family: Lato;
+}
+.received p {
+  background: #e5e5ea;
+  color: black;
+  margin-left: 1vw;
+  font-family: Lato;
+}
+
+.input-text {
+  width: 88%;
+  height: 8.7vh;
+  outline: none;
+  border: none;
+  font-family: Lato;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.submit-button {
+  width: 12%;
+  height:8.7vh;
+  outline: none;
+  border: none;
+  font-family: Lato;
+  background-color: yellow;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  color:white;
+  background-color:orange;
+  transition:0.5s
+}
+
+.form {
+  position: fixed;
+  bottom: 0;
+  width: 59vw;
+}
+
+@media only screen and (max-width: 850px) {
+  #bg {
+      background-image: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.47),
+          rgba(0, 0, 0, 0.47)
+        ),
+        url("https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80");
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 36px;
+    margin-left:5vw;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    line-height: 22px;
+    margin-left:5vw;
+  }
+
+  #google-button {
+    width: 30vw;
+    min-width: 200px;
+    margin-left:5vw;
+  }
+
+  .chat-container {
+    height: 82.8vh;
+    width:100vw;
+  }
+
+  .form {
+    width:100vw;
+  }
+
+  .input-text {
+    width: 80%;
+  }
+
+  .submit-button {
+    width: 20%;
+  }
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .header {
+    padding-top : 2vh;
+  }
+
+  .logo {
+    margin-left:5vw;
+  }
+
+  .signin {
+    margin-right:5vw;
+  }
+
+  p {
+    max-width: 70vw;
+  }
 }

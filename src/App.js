@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -25,7 +25,6 @@ const firestore = firebase.firestore();
 
 
 function App() {
-
   const [user] = useAuthState(auth);
 
   return (
@@ -47,7 +46,7 @@ function SignIn() {
     <div>
       <div className="header">
         <div className="logo">SimplyChat</div>
-        <button className="signin">Sign In</button>
+        <button onClick={signInWithGoogle} className="signin">Sign In</button>
       </div>
 
       <div className="contents">
@@ -59,9 +58,9 @@ function SignIn() {
         </div>
         <div className="google">
           <div>
-            <a class="btn btn-outline-dark" onClick={signInWithGoogle} role="button" style={{ textTransform: 'none', backgroundColor: "white", width: "24.1%" }}>
-              <img width="20px" style={{ backgroundColor: "white" , marginBottom: '3px', marginRight: '5px' }} alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-              Sign in with Google
+            <a id="google-button" className="btn btn-outline-dark" onClick={signInWithGoogle} role="button">
+              <img width="20px" style={{ backgroundColor: "white", marginBottom: '3px', marginRight: '5px' }} alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+              Sign In with Google
             </a>
           </div>
         </div>
@@ -73,9 +72,7 @@ function SignIn() {
 
 function SignOut() {
   return auth.currentUser && (
-    <div className="signout">
-      <button onClick={() => auth.signOut()} tabindex="0" className="ui inverted basic button">Sign Out</button>
-    </div>
+    <button onClick={() => auth.signOut()} className="signin">Sign Out</button>
   )
 }
 
@@ -86,6 +83,10 @@ function ChatRoom() {
   const query = messagesRef.orderBy('createdAt')
   const [messages] = useCollectionData(query, { idField: 'id' });
   const [formValue, setFormValue] = useState('');
+
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -109,32 +110,27 @@ function ChatRoom() {
   }
 
   return (
-    <div className="chatroom">
-      <header className="header">
-        <div className="header-container">
-          <p className="title">SimpleChatApp</p>
-          <SignOut />
-        </div>
-      </header>
-      <div className="fill">
-
+    <div>
+      <div className="header">
+        <div className="logo">SimplyChat</div>
+        <SignOut />
       </div>
-      <main className="content">
+      <div className="chat-container">
 
-        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+        <div className="chat-room">
 
-        <span ref={dummy}></span>
+          {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
-      </main>
+          <span ref={dummy}></span>
 
-      <form onSubmit={sendMessage}>
+        </div>
 
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-        <button id="sub-button" className="ui yellow button" type="submit" >Send</button>
+        <form className="form" onSubmit={sendMessage}>
 
-      </form>
-      <div className="bottomFill">
+          <input className="input-text" value={formValue} onChange={(e) => setFormValue(e.target.value)} />
+          <button className="submit-button" type="submit" >Send</button>
 
+        </form>
       </div>
     </div>
   )
@@ -146,12 +142,13 @@ function ChatMessage(props) {
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
-  return (<div className="message-container">
+  return (<div>
     <div className={`message ${messageClass}`}>
       <img className="messagebox" src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
-      <p>{text}</p>
+      <p className="message-text">{text}</p>
     </div>
-  </div>)
+    </div>
+    )
 }
 
 
