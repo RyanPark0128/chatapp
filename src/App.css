@@ -171,6 +171,8 @@ p {
   border: none;
   font-family: Lato;
   background-color: yellow;
+  margin:0;
+  padding:0;
 }
 
 .submit-button:hover {
@@ -217,8 +219,9 @@ p {
   }
 
   .chat-container {
-    height: 82.8vh;
+    height: 70vh;
     width:100vw;
+    margin-bottom: 5vh;
   }
 
   .form {
